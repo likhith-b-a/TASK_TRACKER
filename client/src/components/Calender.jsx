@@ -11,7 +11,7 @@ const Calendar = ({id, taskRender}) => {
 
   async function getCompletionDays() {
     const cDays = [];
-    let days = await axios.get(`/${base_url}/${id}/completionDays/`)
+    let days = await axios.get(`/${id}/completionDays/`)
     days = days.data.data;
     days.map((day) => {
       cDays.push(day.substring(0, 10));
