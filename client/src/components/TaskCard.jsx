@@ -10,7 +10,7 @@ const TaskCard = ({id}) => {
   const [task, setTask] = useState([]);
   
   const fetchDetails = async () => {
-    const response = await axios.get(`${base_url}/api/${id}/details`)
+    const response = await axios.get(`${base_url}/${id}/details`)
     setTask(response.data.data);
   }
 
