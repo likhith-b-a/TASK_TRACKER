@@ -47,8 +47,6 @@ const Calendar = ({id, taskRender}) => {
   }
 
   const updateTask = async (day) => {
-    const update = prompt("Did you complete???");
-    if (update) {
 
       let clicked_day = new Date(year, month, day + 1).toISOString().split('T')[0];
 
@@ -60,7 +58,10 @@ const Calendar = ({id, taskRender}) => {
       if (!(clicked_day == today || clicked_day == yesterday)) {
         return;
       }
-
+      
+      const update = prompt("Did you complete???");
+      
+    if (update) {
       const response = await axios.post(`${base_url}/${id}/completionDays/add`,
         {
           date: clicked_day
