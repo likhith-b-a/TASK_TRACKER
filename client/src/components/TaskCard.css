@@ -1,0 +1,86 @@
+.taskContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background: linear-gradient(135deg, #fdfbfb, #ebedee);
+}
+
+.task-card {
+  width: 450px;
+  border-radius: 14px;
+  padding: 20px;
+  background: linear-gradient(135deg, #ffffff, #f8f9fa);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  overflow: hidden;
+}
+
+.task-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.18);
+}
+
+.top-part {
+  display: flex;
+  gap: 1.2rem;
+  align-items: center;
+}
+
+.photo-container {
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.task-photo {
+  width: 90%;
+  height: auto;
+  border-radius: 50%;
+  border: 4px solid #ff6f61;
+  transition: transform 0.3s ease-in-out, border-color 0.3s ease-in-out;
+}
+
+.task-photo:hover {
+  transform: scale(1.08);
+  border-color: #ffcc29;
+}
+
+.user-details {
+  font-size: 12px;
+  color: #333;
+  text-align: center;
+  padding: 8px;
+  border-radius: 8px;
+  background: #fef9e7;
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+
+.task-info {
+  margin-top: 2rem;
+  text-align: left;
+}
+
+.task-info h3 {
+  margin: 0;
+  font-size: 22px;
+  color: #2c3e50;
+}
+
+.desc {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.5;
+}
+
+.task-info strong {
+  font-size: x-large;
+  color: #ff6f61;
+}
+
+.streak{
+  margin-top: 1rem;
+  font-size: 20px;
+}
