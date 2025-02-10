@@ -61,7 +61,7 @@ const Calendar = ({id, taskRender}) => {
         return;
       }
 
-      const response = await axios.post(`/${base_url}/api/${id}/completionDays/add`,
+      const response = await axios.post(`${base_url}/${id}/completionDays/add`,
         {
           date: clicked_day
         }
