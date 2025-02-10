@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import "./Calender.css";
 import axios from "axios";
 
+const base_url = "https://task-tracker-cn3a.onrender.com";
+
 const Calendar = ({id, taskRender}) => {
 
   const [completedDays, setCompletedDays] = useState([]);
@@ -9,7 +11,7 @@ const Calendar = ({id, taskRender}) => {
 
   async function getCompletionDays() {
     const cDays = [];
-    let days = await axios.get(`/api/${id}/completionDays/`)
+    let days = await axios.get(`/${base_url}/api/${id}/completionDays/`)
     days = days.data.data;
     days.map((day) => {
       cDays.push(day.substring(0, 10));
@@ -59,7 +61,7 @@ const Calendar = ({id, taskRender}) => {
         return;
       }
 
-      const response = await axios.post(`/api/${id}/completionDays/add`,
+      const response = await axios.post(`/${base_url}/api/${id}/completionDays/add`,
         {
           date: clicked_day
         }
