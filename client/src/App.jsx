@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import "./app.css";
+import "./App.css";
 //import "./assets/background.css";
 import TaskCard from "./components/TaskCard";
 
