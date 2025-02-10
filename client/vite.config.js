@@ -3,15 +3,8 @@ import react from '@vitejs/plugin-react'
 
 // https://vite.dev/config/
 export default defineConfig({
-  server: {
-    proxy: {
-      "/api": {
-        target: "https://task-tracker-cn3a.onrender.com", // Your backend URL
-        changeOrigin: true,
-        secure: false,
-        rewrite: (path) => path.replace(/^\/api/, ""),
-      },
-    },
+  build: {
+    outDir: "dist", // Default for Vite, ensures correct deployment
   },
   plugins: [react()],
 })
