@@ -3,12 +3,14 @@ import "./TaskCard.css";
 import Calendar from "./Calender.jsx";
 import axios from "axios";
 
+const base_url = "https://task-tracker-cn3a.onrender.com";
+
 const TaskCard = ({id}) => {
 
   const [task, setTask] = useState([]);
   
   const fetchDetails = async () => {
-    const response = await axios.get(`/api/${id}/details`)
+    const response = await axios.get(`${base_url}/api/${id}/details`)
     setTask(response.data.data);
   }
 
