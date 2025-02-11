@@ -18,6 +18,16 @@ const TaskCard = ({id}) => {
     fetchDetails()
   }, [])
 
+  const getStreak() => {
+      if(task.streak == 0){
+        return "I am too Lazy" 
+      }else if(task.streak == 1){
+        return '🔥'+task.streak + "day";
+      }else{
+        return '🔥'+task.streak + "days";
+      }
+  }
+
   return (
     <div className="taskContainer">
       <div className="task-card" >
@@ -39,8 +49,7 @@ const TaskCard = ({id}) => {
           <p className="desc">{task.description}</p>
           <div className="streak">
             <p className="streak"><strong>Streak:</strong> 
-              {
-                task.streak == 0 ? {"I am too Lazy"} : {'🔥'+task.streak} days
+              {getStreak()}
             </p>
           </div>
         </div>
