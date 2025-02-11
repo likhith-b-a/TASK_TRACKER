@@ -38,7 +38,10 @@ const TaskCard = ({id}) => {
           <h3>{task.title}</h3>
           <p className="desc">{task.description}</p>
           <div className="streak">
-            <p className="streak"><strong>Streak:</strong> {'🔥'+task.streak} days</p>
+            <p className="streak"><strong>Streak:</strong> 
+              {
+                task.streak == 0 ? {"I am too Lazy"} : {'🔥'+task.streak} days
+            </p>
           </div>
         </div>
       </div>
