@@ -18,7 +18,7 @@ const TaskCard = ({id}) => {
     fetchDetails()
   }, [])
 
-  const getStreak() => {
+  const getStreak = ()=> {
       if(task.streak == 0){
         return "I am too Lazy";
       }else if(task.streak == 1){
