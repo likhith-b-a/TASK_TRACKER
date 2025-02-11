@@ -20,7 +20,7 @@ const TaskCard = ({id}) => {
 
   const getStreak() => {
       if(task.streak == 0){
-        return "I am too Lazy" 
+        return "I am too Lazy";
       }else if(task.streak == 1){
         return '🔥'+task.streak + "day";
       }else{
