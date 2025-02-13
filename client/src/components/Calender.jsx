@@ -47,19 +47,11 @@ const Calendar = ({id, taskRender}) => {
   }
 
   const updateTask = async (day) => {
+    let clicked_day = new Date(year, month, day + 1).toISOString().split('T')[0];
+    let today = new Date().toISOString().split('T')[0];
 
-      let clicked_day = new Date(year, month, day + 1).toISOString().split('T')[0];
-
-      let today = new Date().toISOString().split('T')[0];
-      let yesterday = new Date();
-      yesterday.setDate(yesterday.getDate() - 1)
-      yesterday = yesterday.toISOString().split('T')[0];
-
-      if (!(clicked_day == today || clicked_day == yesterday)) {
-        return;
-      }
-      
-      const update = prompt("Did you complete???");
+    if (clicked_day != today) return;
+    const update = prompt("Did you complete???");
       
     if (update) {
       const response = await axios.post(`${base_url}/${id}/completionDays/add`,
