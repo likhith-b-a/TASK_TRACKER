@@ -11,25 +11,15 @@ const completionDays = asyncHandler(async (req,res) => {
   res.status(201).json(
     new ApiResponse(200,completionDays)
   )
-
 })
 
-const getStreak = asyncHandler(async (req,res) => {
-
-  const {id} = req.params;
-  const user = await User.findById(id);
-
-  const datesArray = user.completedDays;
-
+const streakCalculator = (datesArray)=>{
   if (datesArray.length === 0) return 0;
-
   const dateSet = new Set(datesArray.map(date => date.toISOString().split('T')[0]));
   const sortedDates = [...dateSet].sort((a, b) => new Date(b) - new Date(a));
-
   const today = new Date(new Date().toISOString().split('T')[0]);
   const firstDate = new Date(sortedDates[0]);
   let streak = 0;
-
   if((today - firstDate) / (1000 * 60 * 60 * 24) > 1){
     streak = 0;
   }else{
@@ -44,12 +34,18 @@ const getStreak = asyncHandler(async (req,res) => {
       }
     }
   }
+  return streak;
+}
 
-  user.streak = streak;
+const getStreak = asyncHandler(async (req,res) => {
+  const {id} = req.params;
+  const user = await User.findById(id);
+
+  user.streak = Number(streakCalculator(user.completedDays));
   user.save();
 
   res.status(201).json(
-    new ApiResponse(200,streak)
+    new ApiResponse(200,user.streak)
   )
 })
 
@@ -62,6 +58,7 @@ const addCompletionDay = asyncHandler(async (req, res) => {
   const completionDays = user.completedDays;
   
   user.completedDays = [...completionDays,dateObject]
+  user.streak = Number(streakCalculator(user.completedDays));
   
   user.save();
   res.status(201).json(
