@@ -13,19 +13,25 @@ const TaskCard = ({id}) => {
     const response = await axios.get(`${base_url}/${id}/details`)
     setTask(response.data.data);
   }
+  const fetchStreak = async () => {
+    const response = await axios.get(`/api/${id}/streak`)
+    console.log(response.data);
+  }
 
   useEffect(() => {
     fetchDetails()
+    fetchStreak()
   }, [])
 
   const getStreak = ()=> {
-      if(task.streak == 0){
-        return "I am too Lazy";
-      }else if(task.streak == 1){
-        return '🔥'+task.streak + "day";
-      }else{
-        return '🔥'+task.streak + "days";
-      }
+    fetchStreak();
+    if(task.streak == 0){
+      return "I am too Lazy";
+    }else if(task.streak == 1){
+      return '🔥'+task.streak + "day";
+    }else{
+      return '🔥'+task.streak + "days";
+    }
   }
 
   return (
