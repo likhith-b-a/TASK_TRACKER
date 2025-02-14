@@ -37,7 +37,7 @@ const Calendar = ({id, taskRender}) => {
     today = `${today[0]}-${today[1]}-${today[2]}`
     check_day = `${check_day[0]}-${check_day[1]}-${check_day[2]}`
     if (check_day > today) {
-      return "None";
+      return "future";
     }
     if (completedDays.includes(check_day)) {
       return "completed";
