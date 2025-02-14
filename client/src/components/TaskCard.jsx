@@ -14,7 +14,7 @@ const TaskCard = ({id}) => {
     setTask(response.data.data);
   }
   const fetchStreak = async () => {
-    const response = await axios.get(`/api/${id}/streak`)
+    const response = await axios.get(`${base_url}/${id}/streak`)
     console.log(response.data);
   }
 
